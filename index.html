@@ -5,113 +5,378 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>WJR - Evolucao Semanal</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Inter', sans-serif; background: #f4f0fb; min-height: 100vh; color: #111827; }
-.header { background: #5B2D8E; padding: 20px 24px; display: flex; align-items: center; gap: 14px; }
-.header-logo { width: 44px; height: 44px; background: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #5B2D8E; font-size: 13px; }
-.header h1 { color: white; font-size: 17px; font-weight: 600; }
-.header p { color: #c4a8e8; font-size: 12px; margin-top: 1px; }
-.container { padding: 24px 20px; max-width: 540px; margin: 0 auto; }
-.section-label { font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; }
-.fisio-card { background: white; border: 1.5px solid #e5e7eb; border-radius: 14px; padding: 16px 18px; margin-bottom: 10px; cursor: pointer; display: flex; align-items: center; justify-content: space-between; transition: all 0.15s; }
-.fisio-card:hover { border-color: #5B2D8E; box-shadow: 0 0 0 3px rgba(91,45,142,0.08); }
-.fisio-card .nome { font-weight: 600; font-size: 15px; }
-.fisio-card .esp { font-size: 12px; color: #6b7280; margin-top: 2px; }
-.fisio-card .arrow { color: #5B2D8E; font-size: 20px; }
-.btn { background: transparent; border: 1.5px solid #5B2D8E; color: #5B2D8E; padding: 12px 20px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 8px; transition: all 0.15s; }
-.btn:hover { background: #f0eaf8; }
-.btn-primary { background: #5B2D8E; color: white; border: none; border-radius: 12px; padding: 16px; font-size: 15px; font-weight: 700; cursor: pointer; width: 100%; margin-bottom: 32px; }
-.back-btn { display: flex; align-items: center; gap: 6px; color: #5B2D8E; font-size: 13px; font-weight: 500; cursor: pointer; padding: 4px 0; margin-bottom: 16px; background: none; border: none; }
-.badge { background: #5B2D8E; color: white; border-radius: 12px; padding: 14px 18px; margin-bottom: 20px; }
-.badge .label { font-size: 11px; opacity: 0.75; margin-bottom: 2px; }
-.badge .nome { font-size: 17px; font-weight: 700; }
-.campo { margin-bottom: 14px; }
-.campo label { display: block; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 6px; }
-input[type=text], textarea { width: 100%; border: 1.5px solid #e5e7eb; border-radius: 8px; padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 13px; color: #111827; transition: border-color 0.12s; }
-input[type=text]:focus, textarea:focus { outline: none; border-color: #5B2D8E; }
-textarea { resize: none; line-height: 1.5; }
-.status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-.status-opt { border: 1.5px solid #e5e7eb; border-radius: 8px; padding: 8px 4px; text-align: center; cursor: pointer; font-size: 11px; font-weight: 500; background: white; transition: all 0.12s; }
-.status-opt.verde { border-color: #16a34a; background: #dcfce7; color: #16a34a; }
-.status-opt.amarelo { border-color: #ca8a04; background: #fef9c3; color: #ca8a04; }
-.status-opt.vermelho { border-color: #dc2626; background: #fee2e2; color: #dc2626; }
-.toggle-row { display: flex; align-items: center; justify-content: space-between; }
-.toggle-label { font-size: 13px; font-weight: 500; }
-.toggle { width: 42px; height: 24px; background: #e5e7eb; border-radius: 12px; cursor: pointer; position: relative; border: none; transition: background 0.2s; }
-.toggle.on { background: #5B2D8E; }
-.toggle::after { content: ''; position: absolute; width: 18px; height: 18px; background: white; border-radius: 50%; top: 3px; left: 3px; transition: left 0.2s; }
-.toggle.on::after { left: 21px; }
-.paciente-block { background: white; border: 1.5px solid #e5e7eb; border-radius: 14px; margin-bottom: 14px; overflow: hidden; }
-.paciente-header { padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; background: #f9fafb; border-bottom: 1px solid #e5e7eb; }
-.paciente-nome { font-weight: 600; font-size: 14px; }
-.paciente-body { padding: 14px 16px; }
-.sessao-badge { font-size: 11px; font-weight: 600; background: #f0eaf8; color: #5B2D8E; padding: 3px 9px; border-radius: 20px; }
-.add-btn { width: 100%; border: 1.5px dashed #c4a8e8; background: #f0eaf8; color: #5B2D8E; border-radius: 12px; padding: 14px; font-size: 14px; font-weight: 600; cursor: pointer; margin-bottom: 20px; }
-.tab-bar { display: flex; gap: 8px; margin-bottom: 20px; }
-.tab { flex: 1; padding: 10px; border-radius: 10px; border: 1.5px solid #e5e7eb; background: white; font-size: 13px; font-weight: 600; cursor: pointer; text-align: center; color: #6b7280; }
-.tab.ativo { background: #5B2D8E; color: white; border-color: #5B2D8E; }
-.relatorio-card { background: white; border: 1.5px solid #e5e7eb; border-radius: 14px; margin-bottom: 16px; overflow: hidden; }
-.relatorio-header { padding: 14px 18px; background: #5B2D8E; color: white; display: flex; justify-content: space-between; align-items: center; }
-.relatorio-header .fisio-r { font-weight: 700; font-size: 15px; }
-.paciente-row { padding: 12px 18px; border-bottom: 1px solid #e5e7eb; }
-.paciente-row:last-child { border-bottom: none; }
-.pr-nome { font-weight: 600; font-size: 13px; }
-.pr-info { font-size: 12px; color: #6b7280; margin-top: 2px; }
-.pr-obs { font-size: 12px; color: #555; margin-top: 4px; }
-.flag { font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; margin-right: 4px; }
-.flag-alta { background: #fee2e2; color: #dc2626; }
-.flag-renovar { background: #fef9c3; color: #ca8a04; }
-.empty-state { text-align: center; padding: 40px 20px; color: #6b7280; font-size: 14px; }
-.wpp-btn { display: flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: white; border: none; border-radius: 12px; padding: 14px 20px; font-size: 14px; font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 10px; text-decoration: none; }
-.check-circle { width: 80px; height: 80px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #16a34a; margin-bottom: 20px; }
-#tela-selecao, #tela-formulario, #tela-confirmacao, #tela-diretor { display: none; min-height: 100vh; flex-direction: column; }
-#tela-selecao { display: flex; }
-#tela-confirmacao { align-items: center; justify-content: center; text-align: center; padding: 40px 24px; }
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --roxo: #5B2D8E;
+    --roxo-escuro: #3d1f61;
+    --roxo-claro: #f0eaf8;
+    --roxo-mid: #c4a8e8;
+    --verde: #16a34a;
+    --verde-claro: #dcfce7;
+    --amarelo: #ca8a04;
+    --amarelo-claro: #fef9c3;
+    --vermelho: #dc2626;
+    --vermelho-claro: #fee2e2;
+    --cinza: #6b7280;
+    --cinza-claro: #f9fafb;
+    --borda: #e5e7eb;
+    --texto: #111827;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f0fb;
+    min-height: 100vh;
+    color: var(--texto);
+  }
+
+  /* TELA DE SELE&#199;&#195;O */
+  #tela-selecao, #tela-formulario, #tela-confirmacao, #tela-diretor {
+    display: none;
+    min-height: 100vh;
+  }
+  #tela-selecao { display: flex; flex-direction: column; }
+
+  .header {
+    background: var(--roxo);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .header-logo {
+    width: 44px; height: 44px;
+    background: white;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; color: var(--roxo); font-size: 13px; letter-spacing: -0.5px;
+  }
+  .header h1 { color: white; font-size: 17px; font-weight: 600; }
+  .header p { color: var(--roxo-mid); font-size: 12px; margin-top: 1px; }
+
+  .container { padding: 24px 20px; max-width: 540px; margin: 0 auto; }
+
+  .semana-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--roxo-claro); color: var(--roxo);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .section-label {
+    font-size: 11px; font-weight: 600; color: var(--cinza);
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 10px;
+  }
+
+  .fisio-card {
+    background: white;
+    border: 1.5px solid var(--borda);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .fisio-card:hover { border-color: var(--roxo); box-shadow: 0 0 0 3px rgba(91,45,142,0.08); }
+  .fisio-card .nome { font-weight: 600; font-size: 15px; }
+  .fisio-card .especialidade { font-size: 12px; color: var(--cinza); margin-top: 2px; }
+  .fisio-card .arrow { color: var(--roxo); font-size: 18px; }
+
+  .btn-diretor {
+    background: transparent;
+    border: 1.5px solid var(--roxo);
+    color: var(--roxo);
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+    transition: all 0.15s;
+  }
+  .btn-diretor:hover { background: var(--roxo-claro); }
+
+  /* FORMUL&#193;RIO */
+  .back-btn {
+    display: flex; align-items: center; gap: 6px;
+    color: var(--roxo); font-size: 13px; font-weight: 500;
+    cursor: pointer; padding: 4px 0; margin-bottom: 16px;
+    background: none; border: none;
+  }
+
+  .fisio-nome-badge {
+    background: var(--roxo);
+    color: white;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+  }
+  .fisio-nome-badge .label { font-size: 11px; opacity: 0.75; margin-bottom: 2px; }
+  .fisio-nome-badge .nome { font-size: 17px; font-weight: 700; }
+
+  .paciente-block {
+    background: white;
+    border: 1.5px solid var(--borda);
+    border-radius: 14px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .paciente-header {
+    padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--cinza-claro);
+    border-bottom: 1px solid var(--borda);
+  }
+  .paciente-nome { font-weight: 600; font-size: 14px; }
+  .sessao-badge {
+    font-size: 11px; font-weight: 600;
+    background: var(--roxo-claro); color: var(--roxo);
+    padding: 3px 9px; border-radius: 20px;
+  }
+  .paciente-body { padding: 14px 16px; }
+
+  .campo { margin-bottom: 14px; }
+  .campo label {
+    display: block; font-size: 11px; font-weight: 600;
+    color: var(--cinza); text-transform: uppercase;
+    letter-spacing: 0.6px; margin-bottom: 6px;
+  }
+
+  .status-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+  }
+  .status-opt {
+    border: 1.5px solid var(--borda);
+    border-radius: 8px; padding: 8px 6px;
+    text-align: center; cursor: pointer;
+    font-size: 12px; font-weight: 500;
+    transition: all 0.12s;
+    background: white;
+  }
+  .status-opt.sel-evoluindo { border-color: var(--verde); background: var(--verde-claro); color: var(--verde); }
+  .status-opt.sel-estavel { border-color: var(--amarelo); background: var(--amarelo-claro); color: var(--amarelo); }
+  .status-opt.sel-regredindo { border-color: var(--vermelho); background: var(--vermelho-claro); color: var(--vermelho); }
+
+  textarea {
+    width: 100%; border: 1.5px solid var(--borda);
+    border-radius: 8px; padding: 10px 12px;
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    resize: none; color: var(--texto);
+    transition: border-color 0.12s;
+    line-height: 1.5;
+  }
+  textarea:focus { outline: none; border-color: var(--roxo); }
+  textarea::placeholder { color: #bbb; }
+
+  .toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .toggle-label { font-size: 13px; font-weight: 500; }
+  .toggle {
+    width: 42px; height: 24px; background: var(--borda);
+    border-radius: 12px; cursor: pointer;
+    position: relative; transition: background 0.2s;
+    border: none;
+  }
+  .toggle.on { background: var(--roxo); }
+  .toggle::after {
+    content: ''; position: absolute;
+    width: 18px; height: 18px; background: white;
+    border-radius: 50%; top: 3px; left: 3px;
+    transition: left 0.2s;
+  }
+  .toggle.on::after { left: 21px; }
+
+  .add-paciente-btn {
+    width: 100%;
+    border: 1.5px dashed var(--roxo-mid);
+    background: var(--roxo-claro);
+    color: var(--roxo);
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.15s;
+  }
+  .add-paciente-btn:hover { background: #e8dff5; }
+
+  .btn-enviar {
+    width: 100%;
+    background: var(--roxo);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px;
+    font-size: 15px; font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 32px;
+    transition: background 0.15s;
+  }
+  .btn-enviar:hover { background: var(--roxo-escuro); }
+
+  /* CONFIRMA&#199;&#195;O */
+  #tela-confirmacao {
+    align-items: center; justify-content: center;
+    flex-direction: column; text-align: center;
+    padding: 40px 24px;
+  }
+  .check-circle {
+    width: 80px; height: 80px;
+    background: var(--verde-claro);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px; margin-bottom: 20px;
+  }
+  #tela-confirmacao h2 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  #tela-confirmacao p { color: var(--cinza); font-size: 14px; line-height: 1.6; max-width: 320px; }
+
+  /* TELA DIRETOR */
+  #tela-diretor { flex-direction: column; }
+
+  .relatorio-card {
+    background: white;
+    border: 1.5px solid var(--borda);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .relatorio-header {
+    padding: 14px 18px;
+    background: var(--roxo);
+    color: white;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .relatorio-header .fisio-r { font-weight: 700; font-size: 15px; }
+  .relatorio-header .qtd { font-size: 12px; opacity: 0.8; }
+
+  .paciente-row {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--borda);
+  }
+  .paciente-row:last-child { border-bottom: none; }
+  .pr-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+  .pr-nome { font-weight: 600; font-size: 13px; }
+  .pr-info { font-size: 12px; color: var(--cinza); }
+  .pr-obs { font-size: 12px; color: #555; margin-top: 4px; line-height: 1.4; }
+  .pr-flags { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+  .flag {
+    font-size: 11px; font-weight: 600;
+    padding: 2px 8px; border-radius: 10px;
+  }
+  .flag-alta { background: var(--vermelho-claro); color: var(--vermelho); }
+  .flag-renovar { background: var(--amarelo-claro); color: var(--amarelo); }
+
+  .empty-state {
+    text-align: center; padding: 40px 20px;
+    color: var(--cinza); font-size: 14px;
+  }
+
+  .wpp-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: #25D366; color: white;
+    border: none; border-radius: 12px;
+    padding: 14px 20px; font-size: 14px; font-weight: 600;
+    cursor: pointer; width: 100%; margin-bottom: 10px;
+    transition: background 0.15s;
+    text-decoration: none;
+  }
+  .wpp-btn:hover { background: #1ebe5d; }
+
+  .tab-bar {
+    display: flex; gap: 8px; margin-bottom: 20px;
+  }
+  .tab {
+    flex: 1; padding: 10px;
+    border-radius: 10px; border: 1.5px solid var(--borda);
+    background: white; font-size: 13px; font-weight: 600;
+    cursor: pointer; text-align: center; color: var(--cinza);
+    transition: all 0.12s;
+  }
+  .tab.ativo { background: var(--roxo); color: white; border-color: var(--roxo); }
+
+  input[type="text"] {
+    width: 100%; border: 1.5px solid var(--borda);
+    border-radius: 8px; padding: 10px 12px;
+    font-family: 'Inter', sans-serif; font-size: 13px;
+    color: var(--texto); transition: border-color 0.12s;
+  }
+  input[type="text"]:focus { outline: none; border-color: var(--roxo); }
 </style>
 </head>
 <body>
 
+<!-- TELA 1: SELE&#199;&#195;O DE FISIO -->
 <div id="tela-selecao">
-  <div class="header"><div class="header-logo">WJR</div><div><h1>Evolucao Semanal</h1><p>WJR Fisioterapia Esportiva</p></div></div>
+  <div class="header">
+    <div class="header-logo">WJR</div>
+    <div>
+      <h1>Evolucao Semanal</h1>
+      <p>WJR Fisioterapia Esportiva</p>
+    </div>
+  </div>
   <div class="container">
-    <div class="section-label" style="margin-bottom:6px">Semana: <span id="semana-label"></span></div>
-    <div class="section-label" style="margin-top:16px">Selecione seu nome</div>
+    <div class="semana-badge"> <span id="semana-label"></span></div>
+    <div class="section-label">Selecione seu nome</div>
     <div id="lista-fisios"></div>
-    <div style="margin-top:20px;border-top:1px solid #e5e7eb;padding-top:16px">
+    <div style="margin-top: 20px; border-top: 1px solid var(--borda); padding-top: 16px;">
       <div class="section-label">Acesso diretor</div>
-      <button class="btn" onclick="abrirDiretor()">Ver relatorio consolidado</button>
+      <button class="btn-diretor" onclick="abrirDiretor()"> Ver relatorio consolidado</button>
     </div>
   </div>
 </div>
 
+<!-- TELA 2: FORMUL&#193;RIO -->
 <div id="tela-formulario">
-  <div class="header"><div class="header-logo">WJR</div><div><h1>Evolucao Semanal</h1><p>WJR Fisioterapia Esportiva</p></div></div>
+  <div class="header">
+    <div class="header-logo">WJR</div>
+    <div>
+      <h1>Evolucao Semanal</h1>
+      <p>WJR Fisioterapia Esportiva</p>
+    </div>
+  </div>
   <div class="container">
-    <button class="back-btn" onclick="voltarSelecao()">&#8592; Voltar</button>
-    <div class="badge"><div class="label">Preenchendo como</div><div class="nome" id="nome-fisio-badge"></div></div>
+    <button class="back-btn" onclick="voltarSelecao()">< Voltar</button>
+    <div class="fisio-nome-badge">
+      <div class="label">Preenchendo como</div>
+      <div class="nome" id="nome-fisio-badge"></div>
+    </div>
     <div id="lista-pacientes"></div>
-    <button class="add-btn" onclick="adicionarPaciente()">+ Adicionar paciente</button>
-    <button class="btn-primary" onclick="enviarFormulario()">Enviar evolucao semanal</button>
+    <button class="add-paciente-btn" onclick="adicionarPaciente()">+ Adicionar paciente</button>
+    <button class="btn-enviar" onclick="enviarFormulario()">Enviar evolucao semanal ></button>
   </div>
 </div>
 
+<!-- TELA 3: CONFIRMA&#199;&#195;O -->
 <div id="tela-confirmacao">
-  <div class="check-circle">ENVIADO</div>
-  <h2 style="font-size:22px;font-weight:700;margin-bottom:8px">Enviado com sucesso!</h2>
-  <p style="color:#6b7280;font-size:14px;max-width:320px">A evolucao foi registrada para esta semana.</p>
+  <div class="check-circle"></div>
+  <h2>Enviado com sucesso!</h2>
+  <p>A evolucao dos seus pacientes foi registrada para esta semana. Roger vai visualizar no painel.</p>
   <br>
-  <button class="btn" style="max-width:280px" onclick="voltarSelecao()">Voltar ao inicio</button>
+  <button class="btn-diretor" style="max-width:280px" onclick="voltarSelecao()">Voltar ao in&#237;cio</button>
 </div>
 
+<!-- TELA 4: DIRETOR -->
 <div id="tela-diretor">
-  <div class="header"><div class="header-logo">WJR</div><div><h1>Painel do Diretor</h1><p>Evolucao consolidada</p></div></div>
+  <div class="header">
+    <div class="header-logo">WJR</div>
+    <div>
+      <h1>Painel do Diretor</h1>
+      <p>Evolucao consolidada da semana</p>
+    </div>
+  </div>
   <div class="container">
-    <button class="back-btn" onclick="voltarSelecao()">&#8592; Voltar</button>
+    <button class="back-btn" onclick="voltarSelecao()">< Voltar</button>
     <div class="tab-bar">
-      <button class="tab ativo" onclick="filtrarRelatorio('todos',this)">Todos</button>
-      <button class="tab" onclick="filtrarRelatorio('alta',this)">Alta prevista</button>
-      <button class="tab" onclick="filtrarRelatorio('renovar',this)">Renovar pacote</button>
+      <button class="tab ativo" onclick="filtrarRelatorio('todos', this)">Todos</button>
+      <button class="tab" onclick="filtrarRelatorio('alta', this)">! Alta prevista</button>
+      <button class="tab" onclick="filtrarRelatorio('renovar', this)">&#128260; Renovar pacote</button>
     </div>
     <div id="relatorio-conteudo"></div>
     <div id="wpp-section"></div>
@@ -119,25 +384,349 @@ textarea { resize: none; line-height: 1.5; }
 </div>
 
 <script>
-const APPS_URL='https://script.google.com/macros/s/AKfycbwwnG0JEGW4JqeNiyJrP4gtse3j28NbTJ1Ebrx10Vn8gbcCTP-HUjvlTPocPdnz9TBUyg/exec';
-const FISIOS=[{id:'f1',nome:'Adriano Bastos',esp:'Fisioterapia Esportiva'},{id:'f2',nome:'Andre Deretti',esp:'Fisioterapia Esportiva'},{id:'f3',nome:'Felipe Zanghelini',esp:'Fisioterapia Esportiva'},{id:'f4',nome:'Murilo Demathe',esp:'Fisioterapia Esportiva'},{id:'f5',nome:'Heryks Zanotti',esp:'Fisioterapia Esportiva'},{id:'f6',nome:'Antonio Carlos Denarde',esp:'Fisioterapia Esportiva'}];
-let fisioAtual=null,pacientes=[],relFiltro='todos',pId=0;
-function getSemana(){const h=new Date(),s=new Date(h);s.setDate(h.getDate()-((h.getDay()+6)%7));const x=new Date(s);x.setDate(s.getDate()+4);const f=d=>d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit'});return 'Semana '+f(s)+' - '+f(x);}
-function getChave(){const h=new Date(),s=new Date(h);s.setDate(h.getDate()-((h.getDay()+6)%7));return s.toISOString().slice(0,10);}
-function iniciar(){try{document.getElementById('semana-label').textContent=getSemana();}catch(e){}const l=document.getElementById('lista-fisios');if(!l)return;lInnerHTML=${l.innerHTML}='';FISIOS.forEach(f=>{const ok=!!sessionStorage.getItem('wjr_'+f.id+'_'+getChave());l.innerHTML+=`<div class="fisio-card" onclick="selecionarFisio('${f.id}')"><div><div class="nome">${f.nome}${ok?' (OK)':''}</div><div class="esp">${f.esp}</div></div><span class="arrow">></span></div>`;});}
-function selecionarFisio(id){fisioAtual=FISIOS.find(f=>f.id===id);pacientes=[novoPaciente()];document.getElementById('nome-fisio-badge').textContent=fisioAtual.nome;mostrar('tela-formulario');renderPacientes();}
-function novoPaciente(){return{id:pId++,nome:'',lesao:'',sessaoAtual:'',status:'',obs:'',alta:false,renovar:false};}
-function adicionarPaciente(){pacientes.push(novoPaciente());renderPacientes();}
-function renderPacientes(){const l=document.getElementById('lista-pacientes');l.innerHTML='';pacientes.forEach((p,i)=>{l.innerHTML+=`<div class="paciente-block" id="pb-${p.id}"><div class="paciente-header"><div class="paciente-nome">${p.nome||'Paciente '+(i+1)}</div><div style="display:flex;gap:8px;align-items:center">${p.sessaoAtual?`<span class="sessao-badge">Sessao ${p.sessaoAtual}</span>`:''}${pacientes.length>1?`<span style="cursor:pointer;color:#dc2626;font-size:18px" onclick="removerPaciente(${p.id})">x</span>`:''}</div></div><div class="paciente-body"><div class="campo"><label>Nome</label><input type="text" placeholder="Ey: Joao Silva" value="${p.nome}" oninput="atualizar(${p.id},'nome',this.value)"></div><div class="campo"><label>Lesao</label><input type="text" placeholder="Ex: Lombalgia..." value="${p.lesao}" oninput="atualizar(${p.id},'lesao',this.value)"></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div class="campo"><label>Sessao atual</label><input type="text" placeholder="J: 6" value="${p.sessaoAtual}" oninput="atualizar(${p.id},'sessaoAtual',this.value)"></div><div class="campo"><label>Total sessoes</label><input type="text" placeholder="Ex: 12" value="${p.totalSessoes}" oninput="atualizar(${p.id},'totalSessoes',this.value)"></div></div><div class="campo"><label>Evolucao</label><div class="status-grid"><div class="status-opt ${p.status==='evoluindo''verde':''}" onclick="atualizar(${p.id},'status','evoluindo');renderPacientes()">Evoluindo rapido</div><div class="status-opt ${p.status==='estavel'?'amarelo8':''}" onclick="atualizar(${p.id},'status','estavel');renderPacientes()">Evoluindo normal</div><div class="status-opt ${p.status==='atencao'?'vermelho':''}" onclick="atualizar(${p.id},'status','atencao');renderPacientes()">Atencao urgente</div></div></div><div class="campo"><label>Observacoes</label><textarea rows="2" oninput="atualizar(${p.id},'obs',this.value)">${p.obs}</textarea></div><div class="campo"><div class="toggle-row"><span class="toggle-label">Alta prevista essa semana?</span><button class="toggle ${p.alta?'on':''}" onclick="toggleCampo(${p.id},'alta')"></button></div></div><div class="campo"><div class="toggle-row"><span class="toggle-label">Renovar pacote em breve?</span><button class="toggle ${p.renovar?'on':''}" onclick="toggleCampo(${p.id},'renovar')"></button></div></div></div></div>`;});}
-function atualizar(id,campo,valor){const p=pacientes.find(p=>p.id===id);if(p)p[campo]=valor;const h=document.querySelector('#pb-'+id+' .paciente-nome');if(h)h.textContent=p.nome||'Paciente '+(pacientes.indexOf(p)+1);}
-function toggleCampo(id,campo){const p=pacientes.find(p=>p.id===id);if(p)p[campo]=!p[campo];renderPacientes();}
-function removerPaciente(id){pacientes=pacientes.filter(p=>p.id!==id);renderPacientes();}
-async function enviarFormulario(){const pr=pacientes.filter(p=>p.nome.trim());if(!pr.length){alert('Adicione pelo menos um paciente.');return;}const btn=document.querySelector('.btn-primary');btn.textContent='Enviando...';btn.disabled=true;sessionStorage.setItem('wjr_'+fisioAtual.id+'_'+getChave(),JSON.stringify({fisio:fisioAtual,pacientes:pr}));try{await fetch(APPS_URL,{method:'POST',body:JSON.stringify({semana:getChave(),fisio_id:fisioAtual.id,fisio_nome:fisioAtual.nome,pacientes:pr,enviado_em:new Date().toISOString()})});}catch(e){}mostrar('tela-confirmacao');}
-function abrirDiretor(){mostrar('tela-diretor');renderRelatorio();}
-function filtrarRelatorio(f,btn){relFiltro=f;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('ativo'));btn.classList.add('ativo');renderRelatorio();}
-async function renderRelatorio(){const c=document.getElementById('relatorio-conteudo');c.innerHTML='<div class="empty-state">Carregando...</div>';let rels=[];try{const r=await fetch(APPS_URL+'?semana='+getChave());const rows=await r.json();const m={};rows.forEach(row=>{if(!m[row.fisio_id])m[row.fisio_id]={fisio:FISIOS.find(f=>f.id===row.fisio_id)||{nome:row.fisio_nome},pacientes:[]};m[row.fisio_id].pacientes.push({nome:row.paciente_nome,lesao:row.lesao,sessaoAtual:row.sessao_atual,totalSessoes:row.total_sessoes,status:row.status,obs:row.observacao,alta:row.alta_prevista==='Sim',renovar:row.renovar_pacote==='Sim'});});rels=Object.values(m);}catch(e){rels=FISIOS.map(f=>{const raw=sessionStorage.getItem('wjr_'+f.id+'_'+getChave());if(!raw)return null;const d=JSON.parse(raw);return{fisio:f,pacientes:d.pacientes||[]};}).filter(Boolean);}if(!rels.length){c.innerHTML='<div class="empty-state">Nenhum fisio preencheu ainda.</div>';return;}let html='';const sl={evoluindo:'Evoluindo rapido',estavel:'Evoluindo normal',atencao:'Merece atencao urgente'};rels.forEach(r=>{let pacs=r.pacientes;if(relFiltro==='alta'iPacs=pacs.filter(p=>p.alta);if(relFiltro==='renovar')pacs=pacs.filter(p=>p.renovar);if(!pacs.length)return;html+=`<div class="relatorio-card"><div class="relatorio-header"><span class="fisio-r">${r.fisio.nome}</span><span>${pacs.length} paciente(s)</span></div>`;pacs.forEach(p=>{html+=`<div class="paciente-row"><div class="pr-nome">${p.nome}</div><div class="pr-info">${sl[p.status]||'-'} - Sessao ${p.sessaoAtual||'?'}${p.lesao?' - '+p.lesao:'}</div>${p.obs?`<div class="pr-obs">${p.obs}</div>`:''}<div style="margin-top:4px">${p.alta?'<span class="flag flag-alta">Alta prevista</span>':''}${p.renovar?'<span class="flag flag-renovar">Renovar</span>':''}</div></div>`;});html+='</div>';});c.innerHTML=html||'<div class="empty-state">Nenhum registro.</div>';const wpp=document.getElementById('wpp-section');const nao=FISIOS.filter(f=>!sessionStorage.getItem('wjr_'+f.id+'_'+getChave()));if(nao.length){const link=encodeURIComponent('Oi! Preencha a evolucao dos seus pacientes desta semana: '+window.location.href);wpp.innerHTML='<div style="margin-top:8px"><div class="section-label">Nao preencheram ainda</div>'+nao.map(f=>`<a class="wpp-btn" href="https://wa.me/?text=${link}" target="_blank">Cobrar ${f.nome}</a>`).join('')+'</div>';}else wpp.innerHTML='';}
-function mostrar(id){['tela-selecao','tela-formulario','tela-confirmacao','tela-diretor'].forEach(t=>document.getElementById(t).style.display='none');document.getElementById(id).style.display='flex';window.scrollTo(0,0);}
-function voltarSelecao(){mostrar('tela-selecao');iniciar();}
+// &#9472;&#9472;&#9472; DADOS &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+const FISIOS = [
+  { id: "f1", nome: "Adriano Bastos", especialidade: "Fisioterapia Esportiva" },
+  { id: "f2", nome: "Andre Deretti", especialidade: "Fisioterapia Esportiva" },
+  { id: "f3", nome: "Felipe Zanghelini", especialidade: "Fisioterapia Esportiva" },
+  { id: "f4", nome: "Murilo Demathe", especialidade: "Fisioterapia Esportiva" },
+  { id: "f5", nome: "Heryks Zanotti", especialidade: "Fisioterapia Esportiva" },
+  { id: "f6", nome: "Antonio Carlos Denarde", especialidade: "Fisioterapia Esportiva" },
+];
+
+let fisioAtual = null;
+let pacientes = [];
+let relatorioFiltro = 'todos';
+
+// &#9472;&#9472;&#9472; SEMANA &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+function getSemana() {
+  const hoje = new Date();
+  const seg = new Date(hoje);
+  seg.setDate(hoje.getDate() - ((hoje.getDay() + 6) % 7));
+  const sex = new Date(seg); sex.setDate(seg.getDate() + 4);
+  const fmt = d => d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
+  return `Semana ${fmt(seg)} &#8211; ${fmt(sex)}`;
+}
+
+// &#9472;&#9472;&#9472; CONFIG &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwnG0JEGW4JqeNiyJrP4gtse3j28NbTJ1Ebrx10Vn8gbcCTP-HUjvlTPocPdnz9TBUyg/exec';
+
+// &#9472;&#9472;&#9472; STORAGE &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+function getChaveSemana() {
+  const hoje = new Date();
+  const seg = new Date(hoje);
+  seg.setDate(hoje.getDate() - ((hoje.getDay() + 6) % 7));
+  return seg.toISOString().slice(0, 10);
+}
+
+async function salvarRelatorio(fisioId, dados) {
+  // Salva local como fallback
+  const chave = `wjr_${fisioId}_${getChaveSemana()}`;
+  sessionStorage.setItem(chave, JSON.stringify(dados));
+  // Envia pro Sheets
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({
+        semana: getChaveSemana(),
+        fisio_id: dados.fisio.id,
+        fisio_nome: dados.fisio.nome,
+        pacientes: dados.pacientes,
+        enviado_em: dados.enviadoEm
+      })
+    });
+  } catch(e) { console.warn('Erro ao enviar pro Sheets:', e); }
+}
+
+async function carregarTodosRelatorios() {
+  try {
+    const res = await fetch(`${APPS_SCRIPT_URL}?semana=${getChaveSemana()}`);
+    const rows = await res.json();
+    // Agrupa por fisio
+    const mapa = {};
+    rows.forEach(r => {
+      if (!mapa[r.fisio_id]) {
+        mapa[r.fisio_id] = {
+          fisio: FISIOS.find(f => f.id === r.fisio_id) || { id: r.fisio_id, nome: r.fisio_nome },
+          dados: { pacientes: [] }
+        };
+      }
+      mapa[r.fisio_id].dados.pacientes.push({
+        nome: r.paciente_nome, lesao: r.lesao,
+        sessaoAtual: r.sessao_atual, totalSessoes: r.total_sessoes,
+        status: r.status, observacao: r.observacao,
+        altaPrevista: r.alta_prevista === 'Sim',
+        renovarPacote: r.renovar_pacote === 'Sim'
+      });
+    });
+    return Object.values(mapa);
+  } catch(e) {
+    // Fallback local
+    const chave = getChaveSemana();
+    return FISIOS.map(f => {
+      const raw = sessionStorage.getItem(`wjr_${f.id}_${chave}`);
+      return raw ? { fisio: f, dados: JSON.parse(raw) } : null;
+    }).filter(Boolean);
+  }
+}
+
+// &#9472;&#9472;&#9472; TELA SELE&#199;&#195;O &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+function iniciar() {
+  try { document.getElementById('semana-label').textContent = getSemana(); } catch(e) {}
+  const lista = document.getElementById('lista-fisios');
+  if (!lista) return;
+  lista.innerHTML = '';
+  FISIOS.forEach(f => {
+    const chave = getChaveSemana();
+    const enviou = !!sessionStorage.getItem(`wjr_${f.id}_${chave}`);
+    lista.innerHTML += `
+      <div class="fisio-card" onclick="selecionarFisio('${f.id}')">
+        <div>
+          <div class="nome">${f.nome} ${enviou ? '' : ''}</div>
+          <div class="especialidade">${f.especialidade}</div>
+        </div>
+        <span class="arrow">></span>
+      </div>`;
+  });
+}
+
+function selecionarFisio(id) {
+  fisioAtual = FISIOS.find(f => f.id === id);
+  pacientes = [criarPaciente()];
+  document.getElementById('nome-fisio-badge').textContent = fisioAtual.nome;
+  mostrarTela('tela-formulario');
+  renderPacientes();
+}
+
+// &#9472;&#9472;&#9472; PACIENTES &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+let pId = 0;
+function criarPaciente() {
+  return { id: pId++, nome: '', lesao: '', sessaoAtual: '', totalSessoes: '', status: '', observacao: '', altaPrevista: false, renovarPacote: false };
+}
+
+function adicionarPaciente() {
+  pacientes.push(criarPaciente());
+  renderPacientes();
+  setTimeout(() => {
+    const blocos = document.querySelectorAll('.paciente-block');
+    blocos[blocos.length - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 50);
+}
+
+function renderPacientes() {
+  const lista = document.getElementById('lista-pacientes');
+  lista.innerHTML = '';
+  pacientes.forEach((p, i) => {
+    lista.innerHTML += `
+    <div class="paciente-block" id="pb-${p.id}">
+      <div class="paciente-header">
+        <div>
+          <div class="paciente-nome">${p.nome || `Paciente ${i + 1}`}</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          ${p.sessaoAtual && p.totalSessoes ? `<span class="sessao-badge">Sess&#227;o ${p.sessaoAtual}/${p.totalSessoes}</span>` : ''}
+          ${pacientes.length > 1 ? `<span style="cursor:pointer;color:var(--vermelho);font-size:18px;line-height:1" onclick="removerPaciente(${p.id})">x</span>` : ''}
+        </div>
+      </div>
+      <div class="paciente-body">
+        <div class="campo">
+          <label>Nome do paciente</label>
+          <input type="text" placeholder="Ex: Jo&#227;o Silva" value="${p.nome}"
+            oninput="atualizar(${p.id},'nome',this.value)">
+        </div>
+        <div class="campo">
+          <label>Les&#227;o</label>
+          <input type="text" placeholder="Ex: Lombalgia cr&#244;nica, Tendinite patelar..." value="${p.lesao}"
+            oninput="atualizar(${p.id},'lesao',this.value)">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="campo">
+            <label>Sess&#227;o atual</label>
+            <input type="text" placeholder="Ex: 6" value="${p.sessaoAtual}"
+              oninput="atualizar(${p.id},'sessaoAtual',this.value)">
+          </div>
+          <div class="campo">
+            <label>Total de sess&#245;es</label>
+            <input type="text" placeholder="Ex: 12" value="${p.totalSessoes}"
+              oninput="atualizar(${p.id},'totalSessoes',this.value)">
+          </div>
+        </div>
+        <div class="campo">
+          <label>Evolucao clinica</label>
+          <div class="status-grid">
+            <div class="status-opt ${p.status === 'evoluindo' ? 'sel-evoluindo' : ''}" onclick="atualizar(${p.id},'status','evoluindo');renderPacientes()"> Evoluindo r&#225;pido</div>
+            <div class="status-opt ${p.status === 'estavel' ? 'sel-estavel' : ''}" onclick="atualizar(${p.id},'status','estavel');renderPacientes()"> Evoluindo normal</div>
+            <div class="status-opt ${p.status === 'regredindo' ? 'sel-regredindo' : ''}" onclick="atualizar(${p.id},'status','regredindo');renderPacientes()">! Merece atencao urgente</div>
+          </div>
+        </div>
+        <div class="campo">
+          <label>Observacoes</label>
+          <textarea rows="2" placeholder="Queixa atual, resposta ao tratamento, algo importante..."
+            oninput="atualizar(${p.id},'observacao',this.value)">${p.observacao}</textarea>
+        </div>
+        <div class="campo">
+          <div class="toggle-row">
+            <span class="toggle-label">Alta prevista essa semana?</span>
+            <button class="toggle ${p.altaPrevista ? 'on' : ''}" onclick="toggleCampo(${p.id},'altaPrevista')"></button>
+          </div>
+        </div>
+        <div class="campo">
+          <div class="toggle-row">
+            <span class="toggle-label">Renovar pacote em breve?</span>
+            <button class="toggle ${p.renovarPacote ? 'on' : ''}" onclick="toggleCampo(${p.id},'renovarPacote')"></button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
+function atualizar(id, campo, valor) {
+  const p = pacientes.find(p => p.id === id);
+  if (p) p[campo] = valor;
+  if (campo === 'nome' || campo === 'sessaoAtual' || campo === 'totalSessoes') {
+    const header = document.querySelector(`#pb-${id} .paciente-nome`);
+    if (header) header.textContent = p.nome || `Paciente ${pacientes.indexOf(p) + 1}`;
+    const badge = document.querySelector(`#pb-${id} .sessao-badge`);
+    if (p.sessaoAtual && p.totalSessoes) {
+      if (badge) badge.textContent = `Sess&#227;o ${p.sessaoAtual}/${p.totalSessoes}`;
+      else { renderPacientes(); }
+    }
+  }
+}
+
+function toggleCampo(id, campo) {
+  const p = pacientes.find(p => p.id === id);
+  if (p) p[campo] = !p[campo];
+  renderPacientes();
+}
+
+function removerPaciente(id) {
+  pacientes = pacientes.filter(p => p.id !== id);
+  renderPacientes();
+}
+
+// &#9472;&#9472;&#9472; ENVIO &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+async function enviarFormulario() {
+  const preenchidos = pacientes.filter(p => p.nome.trim());
+  if (!preenchidos.length) { alert('Adicione pelo menos um paciente.'); return; }
+  const btnEnviar = document.querySelector('.btn-enviar');
+  btnEnviar.textContent = 'Enviando...';
+  btnEnviar.disabled = true;
+  await salvarRelatorio(fisioAtual.id, { fisio: fisioAtual, pacientes: preenchidos, enviadoEm: new Date().toISOString() });
+  mostrarTela('tela-confirmacao');
+}
+
+// &#9472;&#9472;&#9472; DIRETOR &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+function abrirDiretor() {
+  mostrarTela('tela-diretor');
+  renderRelatorio();
+}
+
+function filtrarRelatorio(filtro, btn) {
+  relatorioFiltro = filtro;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('ativo'));
+  btn.classList.add('ativo');
+  renderRelatorio();
+}
+
+async function renderRelatorio() {
+  const conteudo = document.getElementById('relatorio-conteudo');
+  conteudo.innerHTML = `<div class="empty-state">Carregando dados...</div>`;
+  const relatorios = await carregarTodosRelatorios();
+  const wppSection = document.getElementById('wpp-section');
+
+  if (!relatorios.length) {
+    conteudo.innerHTML = `<div class="empty-state">Nenhum fisioterapeuta preencheu ainda essa semana.</div>`;
+    wppSection.innerHTML = '';
+    renderBotoesWPP();
+    return;
+  }
+
+  let html = '';
+  let totalAltas = 0, totalRenovar = 0;
+
+  relatorios.forEach(r => {
+    let pacsFiltrados = r.dados.pacientes;
+    if (relatorioFiltro === 'alta') pacsFiltrados = pacsFiltrados.filter(p => p.altaPrevista);
+    if (relatorioFiltro === 'renovar') pacsFiltrados = pacsFiltrados.filter(p => p.renovarPacote);
+    if (!pacsFiltrados.length) return;
+
+    totalAltas += r.dados.pacientes.filter(p => p.altaPrevista).length;
+    totalRenovar += r.dados.pacientes.filter(p => p.renovarPacote).length;
+
+    html += `<div class="relatorio-card">
+      <div class="relatorio-header">
+        <span class="fisio-r">${r.fisio.nome}</span>
+        <span class="qtd">${pacsFiltrados.length} paciente${pacsFiltrados.length > 1 ? 's' : ''}</span>
+      </div>`;
+
+    pacsFiltrados.forEach(p => {
+      const statusEmoji = { evoluindo: '', estavel: '', regredindo: '!' }[p.status] || '-';
+      const statusLabel = { evoluindo: 'Evoluindo r&#225;pido', estavel: 'Evoluindo normal', regredindo: 'Merece atencao urgente' }[p.status] || 'Sem status';
+      html += `<div class="paciente-row">
+        <div class="pr-top">
+          <div>
+            <div class="pr-nome">${p.nome}</div>
+            <div class="pr-info">${statusEmoji} ${statusLabel} - Sess&#227;o ${p.sessaoAtual || '?'}/${p.totalSessoes || '?'}${p.lesao ? ` - ${p.lesao}` : ''}</div>
+          </div>
+        </div>
+        ${p.observacao ? `<div class="pr-obs">${p.observacao}</div>` : ''}
+        <div class="pr-flags">
+          ${p.altaPrevista ? `<span class="flag flag-alta">Alta prevista</span>` : ''}
+          ${p.renovarPacote ? `<span class="flag flag-renovar">Renovar pacote</span>` : ''}
+        </div>
+      </div>`;
+    });
+    html += '</div>';
+  });
+
+  conteudo.innerHTML = html || `<div class="empty-state">Nenhum registro encontrado para esse filtro.</div>`;
+
+  // Resumo
+  if (relatorioFiltro === 'todos' && relatorios.length) {
+    const resumo = document.createElement('div');
+    resumo.style.cssText = 'background:var(--roxo-claro);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;';
+    resumo.innerHTML = `<strong>Resumo da semana:</strong> ${relatorios.length} fisios responderam - ${totalAltas} alta${totalAltas !== 1 ? 's' : ''} prevista${totalAltas !== 1 ? 's' : ''} - ${totalRenovar} pacote${totalRenovar !== 1 ? 's' : ''} pra renovar`;
+    conteudo.prepend(resumo);
+  }
+
+  renderBotoesWPP();
+}
+
+function renderBotoesWPP() {
+  const chave = getChaveSemana();
+  const wppSection = document.getElementById('wpp-section');
+  const naoResponderam = FISIOS.filter(f => !localStorage.getItem(`wjr_${f.id}_${chave}`));
+
+  if (!naoResponderam.length) { wppSection.innerHTML = ''; return; }
+
+  const link = encodeURIComponent(`Oi! &#128075; Por favor preencha a evolucao dos seus pacientes dessa semana:\n${window.location.href}`);
+  wppSection.innerHTML = `
+    <div style="margin-top:8px">
+      <div class="section-label" style="margin-bottom:10px">N&#227;o preencheram ainda (${naoResponderam.length})</div>
+      ${naoResponderam.map(f => `
+        <a class="wpp-btn" href="https://wa.me/?text=${link}" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.886l6.195-1.624A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.49-5.187-1.349l-.371-.221-3.847 1.009 1.027-3.751-.242-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Cobrar ${f.nome}
+        </a>`).join('')}
+    </div>`;
+}
+
+// &#9472;&#9472;&#9472; NAV &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+function mostrarTela(id) {
+  ['tela-selecao','tela-formulario','tela-confirmacao','tela-diretor'].forEach(t => {
+    document.getElementById(t).style.display = 'none';
+  });
+  document.getElementById(id).style.display = ['tela-confirmacao','tela-diretor'].includes(id) ? 'flex' : 'flex';
+  document.getElementById(id).style.flexDirection = 'column';
+  window.scrollTo(0, 0);
+}
+
+function voltarSelecao() { mostrarTela('tela-selecao'); iniciar(); }
+
+// &#9472;&#9472;&#9472; INIT &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
+mostrarTela('tela-selecao');
 iniciar();
 </script>
 </body>
