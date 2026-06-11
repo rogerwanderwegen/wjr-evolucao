@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WJR Ã¢ÂÂ EvoluÃÂ§ÃÂ£o Semanal</title>
+<title>WJR â EvoluÃ§Ã£o Semanal</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -33,7 +33,7 @@
     color: var(--texto);
   }
 
-  /* TELA DE SELEÃÂÃÂO */
+  /* TELA DE SELEÃÃO */
   #tela-selecao, #tela-formulario, #tela-confirmacao, #tela-diretor {
     display: none;
     min-height: 100vh;
@@ -102,7 +102,7 @@
   }
   .btn-diretor:hover { background: var(--roxo-claro); }
 
-  /* FORMULÃÂRIO */
+  /* FORMULÃRIO */
   .back-btn {
     display: flex; align-items: center; gap: 6px;
     color: var(--roxo); font-size: 13px; font-weight: 500;
@@ -221,7 +221,7 @@
   }
   .btn-enviar:hover { background: var(--roxo-escuro); }
 
-  /* CONFIRMAÃÂÃÂO */
+  /* CONFIRMAÃÃO */
   #tela-confirmacao {
     align-items: center; justify-content: center;
     flex-direction: column; text-align: center;
@@ -312,54 +312,54 @@
 </head>
 <body>
 
-<!-- TELA 1: SELEÃÂÃÂO DE FISIO -->
+<!-- TELA 1: SELEÃÃO DE FISIO -->
 <div id="tela-selecao">
   <div class="header">
     <div class="header-logo">WJR</div>
     <div>
-      <h1>EvoluÃÂ§ÃÂ£o Semanal</h1>
+      <h1>EvoluÃ§Ã£o Semanal</h1>
       <p>WJR Fisioterapia Esportiva</p>
     </div>
   </div>
   <div class="container">
-    <div class="semana-badge">Ã°ÂÂÂ <span id="semana-label"></span></div>
+    <div class="semana-badge">ð <span id="semana-label"></span></div>
     <div class="section-label">Selecione seu nome</div>
     <div id="lista-fisios"></div>
     <div style="margin-top: 20px; border-top: 1px solid var(--borda); padding-top: 16px;">
       <div class="section-label">Acesso diretor</div>
-      <button class="btn-diretor" onclick="abrirDiretor()">Ã°ÂÂÂ Ver relatÃÂ³rio consolidado</button>
+      <button class="btn-diretor" onclick="abrirDiretor()">ð Ver relatÃ³rio consolidado</button>
     </div>
   </div>
 </div>
 
-<!-- TELA 2: FORMULÃÂRIO -->
+<!-- TELA 2: FORMULÃRIO -->
 <div id="tela-formulario">
   <div class="header">
     <div class="header-logo">WJR</div>
     <div>
-      <h1>EvoluÃÂ§ÃÂ£o Semanal</h1>
+      <h1>EvoluÃ§Ã£o Semanal</h1>
       <p>WJR Fisioterapia Esportiva</p>
     </div>
   </div>
   <div class="container">
-    <button class="back-btn" onclick="voltarSelecao()">Ã¢ÂÂ Voltar</button>
+    <button class="back-btn" onclick="voltarSelecao()">â Voltar</button>
     <div class="fisio-nome-badge">
       <div class="label">Preenchendo como</div>
       <div class="nome" id="nome-fisio-badge"></div>
     </div>
     <div id="lista-pacientes"></div>
     <button class="add-paciente-btn" onclick="adicionarPaciente()">+ Adicionar paciente</button>
-    <button class="btn-enviar" onclick="enviarFormulario()">Enviar evoluÃÂ§ÃÂ£o semanal Ã¢ÂÂ</button>
+    <button class="btn-enviar" onclick="enviarFormulario()">Enviar evoluÃ§Ã£o semanal â</button>
   </div>
 </div>
 
-<!-- TELA 3: CONFIRMAÃÂÃÂO -->
+<!-- TELA 3: CONFIRMAÃÃO -->
 <div id="tela-confirmacao">
-  <div class="check-circle">Ã¢ÂÂ</div>
+  <div class="check-circle">â</div>
   <h2>Enviado com sucesso!</h2>
-  <p>A evoluÃÂ§ÃÂ£o dos seus pacientes foi registrada para esta semana. Roger vai visualizar no painel.</p>
+  <p>A evoluÃ§Ã£o dos seus pacientes foi registrada para esta semana. Roger vai visualizar no painel.</p>
   <br>
-  <button class="btn-diretor" style="max-width:280px" onclick="voltarSelecao()">Voltar ao inÃÂ­cio</button>
+  <button class="btn-diretor" style="max-width:280px" onclick="voltarSelecao()">Voltar ao inÃ­cio</button>
 </div>
 
 <!-- TELA 4: DIRETOR -->
@@ -368,15 +368,15 @@
     <div class="header-logo">WJR</div>
     <div>
       <h1>Painel do Diretor</h1>
-      <p>EvoluÃÂ§ÃÂ£o consolidada da semana</p>
+      <p>EvoluÃ§Ã£o consolidada da semana</p>
     </div>
   </div>
   <div class="container">
-    <button class="back-btn" onclick="voltarSelecao()">Ã¢ÂÂ Voltar</button>
+    <button class="back-btn" onclick="voltarSelecao()">â Voltar</button>
     <div class="tab-bar">
       <button class="tab ativo" onclick="filtrarRelatorio('todos', this)">Todos</button>
-      <button class="tab" onclick="filtrarRelatorio('alta', this)">Ã¢ÂÂ Ã¯Â¸Â Alta prevista</button>
-      <button class="tab" onclick="filtrarRelatorio('renovar', this)">Ã°ÂÂÂ Renovar pacote</button>
+      <button class="tab" onclick="filtrarRelatorio('alta', this)">â ï¸ Alta prevista</button>
+      <button class="tab" onclick="filtrarRelatorio('renovar', this)">ð Renovar pacote</button>
     </div>
     <div id="relatorio-conteudo"></div>
     <div id="wpp-section"></div>
@@ -384,10 +384,10 @@
 </div>
 
 <script>
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ DADOS Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ DADOS âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const FISIOS = [
   { id: "f1", nome: "Adriano Bastos", especialidade: "Fisioterapia Esportiva" },
-  { id: "f2", nome: "AndrÃÂ© Deretti", especialidade: "Fisioterapia Esportiva" },
+  { id: "f2", nome: "AndrÃ© Deretti", especialidade: "Fisioterapia Esportiva" },
   { id: "f3", nome: "Felipe Zanghelini", especialidade: "Fisioterapia Esportiva" },
   { id: "f4", nome: "Murilo Demathe", especialidade: "Fisioterapia Esportiva" },
   { id: "f5", nome: "Heryks Zanotti", especialidade: "Fisioterapia Esportiva" },
@@ -398,20 +398,20 @@ let fisioAtual = null;
 let pacientes = [];
 let relatorioFiltro = 'todos';
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ SEMANA Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ SEMANA âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function getSemana() {
   const hoje = new Date();
   const seg = new Date(hoje);
   seg.setDate(hoje.getDate() - ((hoje.getDay() + 6) % 7));
   const sex = new Date(seg); sex.setDate(seg.getDate() + 4);
   const fmt = d => d.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
-  return `Semana ${fmt(seg)} Ã¢ÂÂ ${fmt(sex)}`;
+  return `Semana ${fmt(seg)} â ${fmt(sex)}`;
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ CONFIG Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ CONFIG âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwwnG0JEGW4JqeNiyJrP4gtse3j28NbTJ1Ebrx10Vn8gbcCTP-HUjvlTPocPdnz9TBUyg/exec';
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ STORAGE Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ STORAGE âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function getChaveSemana() {
   const hoje = new Date();
   const seg = new Date(hoje);
@@ -470,7 +470,7 @@ async function carregarTodosRelatorios() {
   }
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ TELA SELEÃÂÃÂO Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ TELA SELEÃÃO ââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function iniciar() {
   try { document.getElementById('semana-label').textContent = getSemana(); } catch(e) {}
   const lista = document.getElementById('lista-fisios');
@@ -482,10 +482,10 @@ function iniciar() {
     lista.innerHTML += `
       <div class="fisio-card" onclick="selecionarFisio('${f.id}')">
         <div>
-          <div class="nome">${f.nome} ${enviou ? 'Ã¢ÂÂ' : ''}</div>
+          <div class="nome">${f.nome} ${enviou ? 'â' : ''}</div>
           <div class="especialidade">${f.especialidade}</div>
         </div>
-        <span class="arrow">Ã¢ÂÂº</span>
+        <span class="arrow">âº</span>
       </div>`;
   });
 }
@@ -498,7 +498,7 @@ function selecionarFisio(id) {
   renderPacientes();
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ PACIENTES Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ PACIENTES âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 let pId = 0;
 function criarPaciente() {
   return { id: pId++, nome: '', lesao: '', sessaoAtual: '', totalSessoes: '', status: '', observacao: '', altaPrevista: false, renovarPacote: false };
@@ -524,43 +524,43 @@ function renderPacientes() {
           <div class="paciente-nome">${p.nome || `Paciente ${i + 1}`}</div>
         </div>
         <div style="display:flex;gap:8px;align-items:center">
-          ${p.sessaoAtual && p.totalSessoes ? `<span class="sessao-badge">SessÃÂ£o ${p.sessaoAtual}/${p.totalSessoes}</span>` : ''}
-          ${pacientes.length > 1 ? `<span style="cursor:pointer;color:var(--vermelho);font-size:18px;line-height:1" onclick="removerPaciente(${p.id})">ÃÂ</span>` : ''}
+          ${p.sessaoAtual && p.totalSessoes ? `<span class="sessao-badge">SessÃ£o ${p.sessaoAtual}/${p.totalSessoes}</span>` : ''}
+          ${pacientes.length > 1 ? `<span style="cursor:pointer;color:var(--vermelho);font-size:18px;line-height:1" onclick="removerPaciente(${p.id})">Ã</span>` : ''}
         </div>
       </div>
       <div class="paciente-body">
         <div class="campo">
           <label>Nome do paciente</label>
-          <input type="text" placeholder="Ex: JoÃÂ£o Silva" value="${p.nome}"
+          <input type="text" placeholder="Ex: JoÃ£o Silva" value="${p.nome}"
             oninput="atualizar(${p.id},'nome',this.value)">
         </div>
         <div class="campo">
-          <label>LesÃÂ£o</label>
-          <input type="text" placeholder="Ex: Lombalgia crÃÂ´nica, Tendinite patelar..." value="${p.lesao}"
+          <label>LesÃ£o</label>
+          <input type="text" placeholder="Ex: Lombalgia crÃ´nica, Tendinite patelar..." value="${p.lesao}"
             oninput="atualizar(${p.id},'lesao',this.value)">
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
           <div class="campo">
-            <label>SessÃÂ£o atual</label>
+            <label>SessÃ£o atual</label>
             <input type="text" placeholder="Ex: 6" value="${p.sessaoAtual}"
               oninput="atualizar(${p.id},'sessaoAtual',this.value)">
           </div>
           <div class="campo">
-            <label>Total de sessÃÂµes</label>
+            <label>Total de sessÃµes</label>
             <input type="text" placeholder="Ex: 12" value="${p.totalSessoes}"
               oninput="atualizar(${p.id},'totalSessoes',this.value)">
           </div>
         </div>
         <div class="campo">
-          <label>EvoluÃÂ§ÃÂ£o clÃÂ­nica</label>
+          <label>EvoluÃ§Ã£o clÃ­nica</label>
           <div class="status-grid">
-            <div class="status-opt ${p.status === 'evoluindo' ? 'sel-evoluindo' : ''}" onclick="atualizar(${p.id},'status','evoluindo');renderPacientes()">Ã°ÂÂÂ Evoluindo rÃÂ¡pido</div>
-            <div class="status-opt ${p.status === 'estavel' ? 'sel-estavel' : ''}" onclick="atualizar(${p.id},'status','estavel');renderPacientes()">Ã¢ÂÂ Evoluindo normal</div>
-            <div class="status-opt ${p.status === 'regredindo' ? 'sel-regredindo' : ''}" onclick="atualizar(${p.id},'status','regredindo');renderPacientes()">Ã°ÂÂÂ¨ Merece atenÃÂ§ÃÂ£o urgente</div>
+            <div class="status-opt ${p.status === 'evoluindo' ? 'sel-evoluindo' : ''}" onclick="atualizar(${p.id},'status','evoluindo');renderPacientes()">ð Evoluindo rÃ¡pido</div>
+            <div class="status-opt ${p.status === 'estavel' ? 'sel-estavel' : ''}" onclick="atualizar(${p.id},'status','estavel');renderPacientes()">â Evoluindo normal</div>
+            <div class="status-opt ${p.status === 'regredindo' ? 'sel-regredindo' : ''}" onclick="atualizar(${p.id},'status','regredindo');renderPacientes()">ð¨ Merece atenÃ§Ã£o urgente</div>
           </div>
         </div>
         <div class="campo">
-          <label>ObservaÃÂ§ÃÂµes</label>
+          <label>ObservaÃ§Ãµes</label>
           <textarea rows="2" placeholder="Queixa atual, resposta ao tratamento, algo importante..."
             oninput="atualizar(${p.id},'observacao',this.value)">${p.observacao}</textarea>
         </div>
@@ -589,7 +589,7 @@ function atualizar(id, campo, valor) {
     if (header) header.textContent = p.nome || `Paciente ${pacientes.indexOf(p) + 1}`;
     const badge = document.querySelector(`#pb-${id} .sessao-badge`);
     if (p.sessaoAtual && p.totalSessoes) {
-      if (badge) badge.textContent = `SessÃÂ£o ${p.sessaoAtual}/${p.totalSessoes}`;
+      if (badge) badge.textContent = `SessÃ£o ${p.sessaoAtual}/${p.totalSessoes}`;
       else { renderPacientes(); }
     }
   }
@@ -606,7 +606,7 @@ function removerPaciente(id) {
   renderPacientes();
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ ENVIO Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ ENVIO ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 async function enviarFormulario() {
   const preenchidos = pacientes.filter(p => p.nome.trim());
   if (!preenchidos.length) { alert('Adicione pelo menos um paciente.'); return; }
@@ -617,7 +617,7 @@ async function enviarFormulario() {
   mostrarTela('tela-confirmacao');
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ DIRETOR Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ DIRETOR ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function abrirDiretor() {
   mostrarTela('tela-diretor');
   renderRelatorio();
@@ -662,13 +662,13 @@ async function renderRelatorio() {
       </div>`;
 
     pacsFiltrados.forEach(p => {
-      const statusEmoji = { evoluindo: 'Ã°ÂÂÂ', estavel: 'Ã¢ÂÂ', regredindo: 'Ã°ÂÂÂ¨' }[p.status] || 'Ã¢ÂÂ';
-      const statusLabel = { evoluindo: 'Evoluindo rÃÂ¡pido', estavel: 'Evoluindo normal', regredindo: 'Merece atenÃÂ§ÃÂ£o urgente' }[p.status] || 'Sem status';
+      const statusEmoji = { evoluindo: 'ð', estavel: 'â', regredindo: 'ð¨' }[p.status] || 'â';
+      const statusLabel = { evoluindo: 'Evoluindo rÃ¡pido', estavel: 'Evoluindo normal', regredindo: 'Merece atenÃ§Ã£o urgente' }[p.status] || 'Sem status';
       html += `<div class="paciente-row">
         <div class="pr-top">
           <div>
             <div class="pr-nome">${p.nome}</div>
-            <div class="pr-info">${statusEmoji} ${statusLabel} ÃÂ· SessÃÂ£o ${p.sessaoAtual || '?'}/${p.totalSessoes || '?'}${p.lesao ? ` ÃÂ· ${p.lesao}` : ''}</div>
+            <div class="pr-info">${statusEmoji} ${statusLabel} Â· SessÃ£o ${p.sessaoAtual || '?'}/${p.totalSessoes || '?'}${p.lesao ? ` Â· ${p.lesao}` : ''}</div>
           </div>
         </div>
         ${p.observacao ? `<div class="pr-obs">${p.observacao}</div>` : ''}
@@ -687,7 +687,7 @@ async function renderRelatorio() {
   if (relatorioFiltro === 'todos' && relatorios.length) {
     const resumo = document.createElement('div');
     resumo.style.cssText = 'background:var(--roxo-claro);border-radius:12px;padding:14px 18px;margin-bottom:16px;font-size:13px;';
-    resumo.innerHTML = `<strong>Resumo da semana:</strong> ${relatorios.length} fisios responderam ÃÂ· ${totalAltas} alta${totalAltas !== 1 ? 's' : ''} prevista${totalAltas !== 1 ? 's' : ''} ÃÂ· ${totalRenovar} pacote${totalRenovar !== 1 ? 's' : ''} pra renovar`;
+    resumo.innerHTML = `<strong>Resumo da semana:</strong> ${relatorios.length} fisios responderam Â· ${totalAltas} alta${totalAltas !== 1 ? 's' : ''} prevista${totalAltas !== 1 ? 's' : ''} Â· ${totalRenovar} pacote${totalRenovar !== 1 ? 's' : ''} pra renovar`;
     conteudo.prepend(resumo);
   }
 
@@ -701,10 +701,10 @@ function renderBotoesWPP() {
 
   if (!naoResponderam.length) { wppSection.innerHTML = ''; return; }
 
-  const link = encodeURIComponent(`Oi! Ã°ÂÂÂ Por favor preencha a evoluÃÂ§ÃÂ£o dos seus pacientes dessa semana:\n${window.location.href}`);
+  const link = encodeURIComponent(`Oi! ð Por favor preencha a evoluÃ§Ã£o dos seus pacientes dessa semana:\n${window.location.href}`);
   wppSection.innerHTML = `
     <div style="margin-top:8px">
-      <div class="section-label" style="margin-bottom:10px">NÃÂ£o preencheram ainda (${naoResponderam.length})</div>
+      <div class="section-label" style="margin-bottom:10px">NÃ£o preencheram ainda (${naoResponderam.length})</div>
       ${naoResponderam.map(f => `
         <a class="wpp-btn" href="https://wa.me/?text=${link}" target="_blank">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.855L.057 23.886l6.195-1.624A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.65-.49-5.187-1.349l-.371-.221-3.847 1.009 1.027-3.751-.242-.387A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
@@ -713,7 +713,7 @@ function renderBotoesWPP() {
     </div>`;
 }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ NAV Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ NAV ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 function mostrarTela(id) {
   ['tela-selecao','tela-formulario','tela-confirmacao','tela-diretor'].forEach(t => {
     document.getElementById(t).style.display = 'none';
@@ -725,7 +725,7 @@ function mostrarTela(id) {
 
 function voltarSelecao() { mostrarTela('tela-selecao'); iniciar(); }
 
-// Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂ INIT Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+// âââ INIT âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 mostrarTela('tela-selecao');
 iniciar();
 </script>
